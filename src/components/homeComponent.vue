@@ -12,6 +12,7 @@
 
 <script>
 import CountryComponent from './countryComponent.vue';
+import CountryResourceMixin from '../mixins/countryResourceMixin';
 
 export default {
 	components: {
@@ -24,23 +25,47 @@ export default {
 		}
 	},
 	created() {
-		console.log('here');
-		this.$http.get('http://83.212.115.201/api.php/country/Finland')
-			.then(function(data) {
 
-				this.country = data.body;
-				console.log(this.country);
+		let self = this;
+
+		self.getCountryName()
+			.then(function(response) {
+				
+				let countryName = response.body.country_name;
+
+				self.getCountry(countryName)
+					.then(function(response) {
+
+						self.country = response.body;
+
+					},
+					function(error) {
+
+						console.log(error);
+
+					});
+
+				self.getEmergencyPhoneNumbers(countryName)
+					.then(function(response) {
+
+						self.emergencies = response.body;
+
+					},
+					function(error) {
+
+						console.log(error);
+
+					});
+				
+			},
+			function(error) {
+			
+				console.log(error);
 
 			});
-
-		this.$http.get('http://83.212.115.201/api.php/country/emergency/Finland')
-			.then(function(data) {
-
-				this.emergencies = data.body;
-				console.log(this.emergencies)
-
-			})
-	}
+	
+	},
+	mixins: [CountryResourceMixin]
 }
 </script>
 
