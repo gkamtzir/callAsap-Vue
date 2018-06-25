@@ -4,6 +4,8 @@ Find the emergency phone number you need ASAP.
 
 You can visit the website at http://callasap.eu.
 
+*Right now, the CallAsap website is running on Angular 4*
+
 ## What is CallAsap?
 
 Each year, more than 500 million people visit Europe. Characterized by stunning scenery in most of its countries, Europe is also the mother of literature, music, art and philosophy: a seemingly perfect destination for permanent residence – even more so when its organized workplaces are taken into account.
