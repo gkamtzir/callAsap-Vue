@@ -20,8 +20,8 @@ export default {
 	},
 	data () {
 		return {
-			country: {},
-			emergencies: {}
+			country: null,
+			emergencies: null
 		}
 	},
 	created() {

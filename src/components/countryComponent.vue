@@ -1,6 +1,6 @@
 <template>
     <div v-if="country">
-        <h3>General information about <b>{{ country.Name }}</b><img v-bind:src="'assets/flagIcons/' + country.Name  + '.png'" width="54" height="40" /></h3>
+        <h3>General information about <b>{{ country.Name }}</b><img v-bind:src="'/src/assets/flagIcons/' + country.Name.toLowerCase()  + '.png'" width="54" height="40" /></h3>
         <table class="table table-hover center">
             <thead>
                 <tr>
