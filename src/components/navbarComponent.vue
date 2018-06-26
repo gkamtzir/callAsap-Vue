@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<nav class="navbar navbar-expand-lg bg-light">
-			<a class="navbar-brand" href="#">CallAsap</a>
+			<a class="navbar-brand" href="#"><router-link to="/">CallAsap</router-link></a>
 
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
 				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
