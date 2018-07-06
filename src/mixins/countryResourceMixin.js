@@ -6,7 +6,7 @@ export default {
 
             return new Promise(function(resolve, reject) {
    
-                self.$http.get('https://freegeoip.net/json/')
+                self.$http.get('http://ip-api.com/json')
                     .then(resolve, reject);
 
             });

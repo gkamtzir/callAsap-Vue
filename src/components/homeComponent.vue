@@ -31,7 +31,7 @@ export default {
 		self.getCountryName()
 			.then(function(response) {
 				
-				let countryName = response.body.country_name;
+				let countryName = response.body.country;
 
 				self.getCountry(countryName)
 					.then(function(response) {
