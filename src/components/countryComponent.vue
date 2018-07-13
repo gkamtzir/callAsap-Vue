@@ -33,7 +33,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="emergency of emergencies" v-bind:key="emergency.Number">
+                    <tr v-for="emergency of emergencies" v-bind:key="emergency.Type">
                         <td>{{ emergency.Type }}</td>
                         <td>{{ emergency.Number }}</td>
                     </tr>
