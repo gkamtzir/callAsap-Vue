@@ -15,6 +15,7 @@
                 </div>
                 <div class="col-md-6">
                     <select class="custom-select" v-model="country" v-on:change="updateEmergencies">
+                        <option value="" disabled>Select Country</option>
                         <option v-for="country in countries" v-bind:key="country.id" v-bind:value="country">
                             {{ country.Name }}
                         </option>
@@ -42,7 +43,11 @@ export default {
     data () {
         return {
             countries: [],
-            country: null,
+            /* 
+                We set country to '' in order to match
+                the pre-selected option.
+            */
+            country: '',
             emergencies: null
         }
     },
@@ -50,8 +55,6 @@ export default {
         updateEmergencies() {
 
             let self = this;
-
-            console.log('aslkj');
 
             self.getEmergencyPhoneNumbers(this.country.Name)
                 .then(function(response) {
