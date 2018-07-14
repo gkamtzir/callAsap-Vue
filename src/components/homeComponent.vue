@@ -28,11 +28,17 @@ export default {
 
 		let self = this;
 
+		/*
+			Fetching client's country name.
+		*/
 		self.getCountryName()
 			.then(function(response) {
 				
 				let countryName = response.body.country;
 
+				/*
+					Fetching country's details.
+				*/
 				self.getCountry(countryName)
 					.then(function(response) {
 
@@ -45,6 +51,9 @@ export default {
 
 					});
 
+				/*
+					Fetching country's emergency phone numbers.
+				*/
 				self.getEmergencyPhoneNumbers(countryName)
 					.then(function(response) {
 

@@ -56,6 +56,9 @@ export default {
 
             let self = this;
 
+            /*
+                Fetching the emergency phone numbers.
+            */
             self.getEmergencyPhoneNumbers(this.country.Name)
                 .then(function(response) {
 
@@ -75,6 +78,9 @@ export default {
 
         let self = this;
 
+        /*
+            Fetching the countries.
+        */
         self.getCountries()
             .then(function(response) {
 
