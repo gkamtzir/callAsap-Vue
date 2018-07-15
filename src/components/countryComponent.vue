@@ -47,17 +47,23 @@
 </template>
 
 <script>
-export default {
-    props: [
-        'country',
-        'emergencies'
-    ],
-    data () {
-        return {
-      
+
+    /**
+    * @vue-prop {Number} country - User's country details.
+    * @vue-prop {Number} emergencies - User's country emergency phone numbers.
+    */
+
+    export default {
+        props: [
+            'country',
+            'emergencies'
+        ],
+        data () {
+            return {
+        
+            }
         }
     }
-}
 </script>
 
 <style>

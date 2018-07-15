@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>components/searchComponent.vue - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Modules</li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-countryComponent.html">countryComponent</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-homeComponent.html">homeComponent</a></span></li><li class="nav-heading"><span class="nav-item-type type-module">M</span><span class="nav-item-name"><a href="module-searchComponent.html">searchComponent</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module-searchComponent.html#updateEmergencies">updateEmergencies</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">components/searchComponent.vue</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>&lt;template>
+    &lt;div>
+        &lt;div class="container">
+
+            &lt;h1>SEARCH&lt;/h1>
+
+            &lt;h4>Find any emergency phone immediately.&lt;/h4>
+
+            &lt;br />
+
+            &lt;div class="form-group">
+                &lt;div class="row">
+                &lt;div class="col-md-3">
+                    &lt;label for="country">Country:&lt;/label>
+                &lt;/div>
+                &lt;div class="col-md-6">
+                    &lt;select class="custom-select" v-model="country" v-on:change="updateEmergencies">
+                        &lt;option value="" disabled>Select Country&lt;/option>
+                        &lt;option v-for="country in countries" v-bind:key="country.id" v-bind:value="country">
+                            {{ country.Name }}
+                        &lt;/option>
+                    &lt;/select>
+                &lt;/div>
+                &lt;/div>
+            &lt;/div>
+
+            &lt;hr />
+
+            &lt;app-country v-bind:country="country" v-bind:emergencies="emergencies">&lt;/app-country>
+
+        &lt;/div>
+    &lt;/div>
+&lt;/template>
+
+&lt;script>
+
+    import CountryComponent from './countryComponent.vue';
+    import CountryResourceMixin from '../mixins/countryResourceMixin';
+
+    /**
+    * @vue-data {Array} [countries=[]] - All available european countries.
+    * @vue-data {String} [country=''] - Selected country's name.
+    * @vue-data {Array} [emergencies=null] - User's country emergency phone numbers.
+    */
+
+    export default {
+        components: {
+            'app-country': CountryComponent
+        },
+        data () {
+            return {
+                countries: [],
+                /* 
+                    We set country to '' in order to match
+                    the pre-selected option.
+                */
+                country: '',
+                emergencies: null
+            }
+        },
+        methods: {
+            /** 
+             * Fetches user's country emergency phone numbers.
+             **/
+            updateEmergencies() {
+
+                let self = this;
+
+                /*
+                    Fetching the emergency phone numbers.
+                */
+                self.getEmergencyPhoneNumbers(this.country.Name)
+                    .then(function(response) {
+
+                        
+                        self.emergencies = response.body;
+
+                    },
+                    function(error) {
+
+                        console.log(error);
+
+                    });
+
+            }
+        },
+        created() {
+
+            let self = this;
+
+            /*
+                Fetching the countries.
+            */
+            self.getCountries()
+                .then(function(response) {
+
+                    self.countries = response.body;
+
+                },
+                function(error) {
+
+                    console.log(error);
+
+                });
+
+        },
+        mixins: [CountryResourceMixin]
+    }
+
+&lt;/script>
+
+&lt;style>
+
+&lt;/style>
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Jul 14 2018 12:38:18 GMT+0300 (GTB Daylight Time) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

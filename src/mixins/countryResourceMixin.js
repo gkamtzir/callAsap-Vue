@@ -1,5 +1,9 @@
 export default {
     methods: {
+        /** 
+         * Fetching user's country details based
+         * on his/her IP.
+        **/
         getCountryName() {
 
             let self = this;
@@ -11,7 +15,10 @@ export default {
 
             });
            
-          },
+        },
+        /**
+         * Fetching all the available european countries.
+         **/
         getCountries() {
 
             let self = this;
@@ -24,6 +31,9 @@ export default {
             });
 
         },
+        /**
+         * Fetching user's country emergency details.
+         **/
         getCountry(country) {
 
             let self = this;
@@ -36,6 +46,9 @@ export default {
             });
 
         },
+        /**
+         * Fetching user's country emergency phone numbers.
+         **/
         getEmergencyPhoneNumbers(country) {
 
             let self = this;

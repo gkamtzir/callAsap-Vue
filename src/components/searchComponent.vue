@@ -33,37 +33,68 @@
 </template>
 
 <script>
-import CountryComponent from './countryComponent.vue';
-import CountryResourceMixin from '../mixins/countryResourceMixin';
 
-export default {
-    components: {
-        'app-country': CountryComponent
-    },
-    data () {
-        return {
-            countries: [],
-            /* 
-                We set country to '' in order to match
-                the pre-selected option.
-            */
-            country: '',
-            emergencies: null
-        }
-    },
-    methods: {
-        updateEmergencies() {
+    import CountryComponent from './countryComponent.vue';
+    import CountryResourceMixin from '../mixins/countryResourceMixin';
+
+    /**
+    * @vue-data {Array} [countries=[]] - All available european countries.
+    * @vue-data {String} [country=''] - Selected country's name.
+    * @vue-data {Array} [emergencies=null] - User's country emergency phone numbers.
+    */
+
+    export default {
+        components: {
+            'app-country': CountryComponent
+        },
+        data () {
+            return {
+                countries: [],
+                /* 
+                    We set country to '' in order to match
+                    the pre-selected option.
+                */
+                country: '',
+                emergencies: null
+            }
+        },
+        methods: {
+            /** 
+             * Fetches user's country emergency phone numbers.
+             **/
+            updateEmergencies() {
+
+                let self = this;
+
+                /*
+                    Fetching the emergency phone numbers.
+                */
+                self.getEmergencyPhoneNumbers(this.country.Name)
+                    .then(function(response) {
+
+                        
+                        self.emergencies = response.body;
+
+                    },
+                    function(error) {
+
+                        console.log(error);
+
+                    });
+
+            }
+        },
+        created() {
 
             let self = this;
 
             /*
-                Fetching the emergency phone numbers.
+                Fetching the countries.
             */
-            self.getEmergencyPhoneNumbers(this.country.Name)
+            self.getCountries()
                 .then(function(response) {
 
-                    
-                    self.emergencies = response.body;
+                    self.countries = response.body;
 
                 },
                 function(error) {
@@ -72,30 +103,10 @@ export default {
 
                 });
 
-        }
-    },
-    created() {
+        },
+        mixins: [CountryResourceMixin]
+    }
 
-        let self = this;
-
-        /*
-            Fetching the countries.
-        */
-        self.getCountries()
-            .then(function(response) {
-
-                self.countries = response.body;
-
-            },
-            function(error) {
-
-                console.log(error);
-
-            });
-
-    },
-    mixins: [CountryResourceMixin]
-}
 </script>
 
 <style>
