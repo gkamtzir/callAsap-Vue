@@ -10,14 +10,14 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active">
-						<router-link to="/">Home</router-link>
+					<li class="nav-item">
+						<router-link to="/" v-bind:class="{active: this.$route.path === '/'}">Home</router-link>
 					</li>
 					<li class="nav-item">
-						<router-link to="/search">Search</router-link>
+						<router-link to="/search" v-bind:class="{active: this.$route.path === '/search'}">Search</router-link>
 					</li>
 					<li class="nav-item">
-						<router-link to="/about">About</router-link>
+						<router-link to="/about" v-bind:class="{active: this.$route.path === '/about'}">About</router-link>
 					</li>
 
 					<li>
