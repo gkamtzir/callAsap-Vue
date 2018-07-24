@@ -13,6 +13,7 @@
   "dependencies": {
     "bootstrap": "^4.1.1",
     "node-sass": "^4.9.0",
+    "raven-js": "^3.26.4",
     "sass-loader": "^7.0.3",
     "vue": "^2.5.11",
     "vue-resource": "^1.5.1",
