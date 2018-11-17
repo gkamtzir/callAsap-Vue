@@ -25,7 +25,7 @@ export default {
 
             return new Promise(function(resolve, reject) {
    
-                self.$http.get('http://83.212.115.201/api.php/country')
+                self.$http.get('http://gkamtzir.webpages.auth.gr/api.php/country')
                     .then(resolve, reject);
 
             });
@@ -40,7 +40,7 @@ export default {
 
             return new Promise(function(resolve, reject) {
    
-                self.$http.get('http://83.212.115.201/api.php/country/' + country)
+                self.$http.get('http://gkamtzir.webpages.auth.gr/api.php/country/' + country)
                     .then(resolve, reject);
 
             });
@@ -55,7 +55,7 @@ export default {
 
             return new Promise(function(resolve, reject) {
    
-                self.$http.get('http://83.212.115.201/api.php/country/emergency/' + country)
+                self.$http.get('http://gkamtzir.webpages.auth.gr/api.php/country/emergency/' + country)
                     .then(resolve, reject);
 
             });
